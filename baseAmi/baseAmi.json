@@ -1,0 +1,39 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "region": "us-east-2"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "ami_name": "t2micro-base",
+      "ami_virtualization_type": "hvm",
+      "ami_regions": "{{user `region`}}",
+      "force_deregister": true,
+      "force_delete_snapshot": true,
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `region`}}",
+      "instance_type": "t2.micro",
+      "source_ami": "ami-0fc20dd1da406780b",
+      "shutdown_behavior": "terminate",
+      "ssh_username": "ubuntu"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "./aws2-key",
+      "destination": "/tmp/aws2-key"
+    },
+    {
+      "type": "shell",
+      "script": "./install-common-programs.sh"
+    },
+    {
+      "type": "shell",
+      "script": "./install-patches.sh"
+    }
+  ]
+}

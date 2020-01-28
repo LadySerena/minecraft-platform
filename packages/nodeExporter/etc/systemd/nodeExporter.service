@@ -1,0 +1,11 @@
+[Unit]
+Description=node exporter (collects hardware stats)
+Documentation=https://github.com/prometheus/node_exporter/blob/master/README.md
+[Service]
+Type=simple
+ExecStart=/usr/sbin/node_exporter --collector.systemd
+Restart=on-failure
+User=nodeExporter
+Group=nodeExporter
+[Install]
+WantedBy=multi-user.target
