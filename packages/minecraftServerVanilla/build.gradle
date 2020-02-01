@@ -18,7 +18,7 @@ task buildMinecraft(type: Deb) {
     packageName 'minecraft'
     version '1.15.1'
     release '1'
-    arch 'NOARCH'
+    arch 'all'
     os 'Linux'
     requires('java-11-openjdk-headless')
     preInstall file('scripts/preInstall.sh')
@@ -43,4 +43,8 @@ task buildMinecraft(type: Deb) {
         permissionGroup 'root'
         fileMode 0644
     }
+}
+
+build {
+    dependsOn buildMinecraft
 }

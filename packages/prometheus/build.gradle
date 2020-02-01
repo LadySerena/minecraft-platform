@@ -16,12 +16,12 @@ task untarArchive(type: Copy){
   into buildDir
 }
 
-task buildPrometheus(type: Rpm) {
+task buildPrometheus(type: Deb) {
   dependsOn untarArchive
   packageName 'prometheus'
   version '2.14.0'
   release '1'
-  arch X86_64
+  arch "amd64"
   preInstall file('scripts/preInstall.sh')
   postInstall file('scripts/postInstall.sh')
   os LINUX

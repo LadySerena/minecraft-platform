@@ -24,7 +24,7 @@ task buildNodeExporter(type: Deb) {
   release '1'
   preInstall file('scripts/preInstall.sh')
   postInstall file('scripts/postInstall.sh')
-  arch 'X86_64'
+  arch "amd64"
   os 'Linux'
   from("${buildDir}/node_exporter-0.18.1.linux-amd64") {
     user = 'root'

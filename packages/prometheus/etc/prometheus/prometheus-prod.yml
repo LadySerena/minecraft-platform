@@ -12,7 +12,6 @@ scrape_configs:
 
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
-    ec2_sd_configs:
-      # AWS Role ARN, an alternative to using AWS API keys.
-      - role_arn: arn:aws:iam::827186163135:role/prometheus_role
-        port: 9090
+    static_configs:
+    - targets: 
+      - localhost:9090
