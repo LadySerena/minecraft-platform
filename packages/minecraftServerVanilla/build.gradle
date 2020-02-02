@@ -20,7 +20,7 @@ task buildMinecraft(type: Deb) {
     release '1'
     arch 'all'
     os 'Linux'
-    requires('java-11-openjdk-headless')
+    requires('openjdk-11-jdk-headless')
     preInstall file('scripts/preInstall.sh')
     postInstall file('scripts/postInstall.sh')
     from('opt/minecraft') {

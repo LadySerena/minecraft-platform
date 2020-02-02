@@ -4,7 +4,7 @@ Documentation=https://minecraft.gamepedia.com/Tutorials/Setting_up_a_server#Linu
 [Service]
 WorkingDirectory=/opt/minecraft
 Type=simple
-ExecStart=/usr/lib/jvm/java-11-openjdk-11.0.5.10-0.el7_7.x86_64/bin/java -Xmx1024M -Xms1024M -jar /opt/minecraft/server.jar nogui
+ExecStart=/usr/bin/java -Xmx2048M -Xms2048M -jar /opt/minecraft/server.jar nogui
 Restart=on-failure
 User=minecraft
 Group=minecraft
