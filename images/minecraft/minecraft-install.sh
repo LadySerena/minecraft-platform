@@ -5,3 +5,4 @@ ls -alh /tmp
 sudo apt-get update -y
 sudo dpkg -i /tmp/minecraft.deb
 sudo apt-get install -f -y
+rm /tmp/minecraft.deb

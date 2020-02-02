@@ -8,7 +8,7 @@ import com.*
  */
 
 task downloadMinecraftJars(type: Download){
-    src 'https://launcher.mojang.com/v1/objects/4d1826eebac84847c71a77f9349cc22afd0cf0a1/server.jar'
+    src 'https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar'
     dest buildDir
     overwrite false
 }
@@ -16,7 +16,7 @@ task downloadMinecraftJars(type: Download){
 task buildMinecraft(type: Deb) {
     dependsOn downloadMinecraftJars
     packageName 'minecraft'
-    version '1.15.1'
+    version '1.15.2'
     release '1'
     arch 'all'
     os 'Linux'
@@ -28,7 +28,6 @@ task buildMinecraft(type: Deb) {
         user 'minecraft'
         permissionGroup 'minecraft'
         fileMode 0644
-
     }
     from(buildDir) {
         into '/opt/minecraft'

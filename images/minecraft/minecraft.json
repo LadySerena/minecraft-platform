@@ -1,0 +1,24 @@
+{
+    "variables": {
+        "account_json": "{{env `GOOGLE_CLOUD_KEYFILE_JSON`}}"
+    },
+    "builders": [
+      {
+        "type": "googlecompute",
+        "account_file": "{{user `account_json`}}",
+        "project_id": "minecraft-server-tiede",
+        "image_name": "minecraft-{{timestamp}}",
+        "image_description": "minecraft image",
+        "source_image": "debian-10-base-1580671541",
+        "ssh_username": "packer",
+        "zone": "us-central1-a",
+        "service_account_email": "packer-builder-account@minecraft-server-tiede.iam.gserviceaccount.com"
+      }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "minecraft-install.sh"
+        }
+    ]
+  }

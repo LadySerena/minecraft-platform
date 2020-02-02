@@ -7,7 +7,7 @@
         "type": "googlecompute",
         "account_file": "{{user `account_json`}}",
         "project_id": "minecraft-server-tiede",
-        "image_name": "minecraft-{{timestamp}}",
+        "image_name": "debian-10-base-{{timestamp}}",
         "image_description": "minecraft image",
         "source_image_family": "debian-10",
         "ssh_username": "packer",
@@ -18,7 +18,16 @@
     "provisioners": [
         {
             "type": "shell",
-            "script": "minecraft-install.sh"
+            "script": "patch.sh"
+        },
+        {
+          "type": "file",
+          "source": "sshd_config",
+          "destination": "/tmp/sshd_config"
+        },
+        {
+          "type": "shell",
+          "script": "test-and-update-sshd.sh"
         }
     ]
   }
